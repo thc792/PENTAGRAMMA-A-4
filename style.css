@@ -2,46 +2,44 @@
 body {
     font-family: sans-serif;
     padding: 20px;
-    background-color: #f4f4f4; /* Sfondo leggermente grigio */
-    color: #333; /* Colore testo scuro */
+    background-color: #FDF8F0; /* Sfondo: Beige/avorio molto chiaro e caldo */
+    color: #4E342E; /* Colore testo principale: Marrone scuro */
 }
 
-/* Stili per i contenitori dei pentagrammi */
+/* Stili per i contenitori dei pentagrammi (Lasciati volutamente semplici) */
 .stave-container {
-    margin-bottom: 25px; /* Spazio tra i sistemi */
-    border: 1px solid #ccc; /* Bordo più visibile */
-    background-color: #fff; /* Sfondo bianco per il pentagramma */
-    min-height: 190px; /* Altezza minima per contenere il grand staff */
-    width: 90%; /* Larghezza relativa */
-    max-width: 850px; /* Larghezza massima aumentata leggermente */
+    margin-bottom: 25px;
+    border: 1px solid #D7CCC8; /* Bordo: Marrone molto chiaro, poco invadente */
+    background-color: #fff; /* Sfondo bianco per massima leggibilità */
+    min-height: 190px;
+    width: 90%;
+    max-width: 850px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    position: relative; /* Necessario per posizionare l'evidenziazione */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Ombra leggera */
-    overflow: hidden; /* Nasconde eventuali contenuti SVG che escono */
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(109, 76, 65, 0.1); /* Ombra leggera con tinta marrone */
+    overflow: hidden;
 }
 
 /* Contenitore per tutti i controlli sotto i pentagrammi */
 #controls {
     margin-top: 30px;
     padding: 15px 20px;
-    border: 1px solid #ccc;
-    background-color: #e9e9e9; /* Sfondo leggermente più scuro per i controlli */
-    max-width: 850px; /* Stessa larghezza massima dei pentagrammi */
+    border: 1px solid #BCAAA4; /* Bordo: Marrone chiaro/Taupe */
+    background-color: #EFEBE9; /* Sfondo: Grigio/Beige molto chiaro e caldo */
+    max-width: 850px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    border-radius: 5px; /* Angoli arrotondati */
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-
-    /* Flexbox per allineare i gruppi di controlli */
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(109, 76, 65, 0.1); /* Ombra leggera con tinta marrone */
     display: flex;
-    flex-wrap: wrap; /* Permette ai controlli di andare a capo su schermi piccoli */
-    justify-content: space-around; /* Spazia i gruppi di controlli */
-    align-items: center; /* Allinea verticalmente al centro */
-    gap: 10px 15px; /* Aggiustato gap per più controlli */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px 15px;
 }
 
 /* Stili per i singoli gruppi di controlli */
@@ -50,9 +48,8 @@ body {
 #selection-status,
 #time-signature-selector,
 #navigation,
-#export-controls { /* Aggiunto #export-controls */
-    margin-bottom: 5px; /* Ridotto margine inferiore interno ai gruppi */
-    /* Rimosso margine laterale, gestito da 'gap' in #controls */
+#export-controls {
+    margin-bottom: 5px;
 }
 
 /* Stili per i testi di stato */
@@ -61,102 +58,114 @@ body {
 #selection-status {
     font-weight: bold;
     font-size: 0.9em;
-    padding: 5px;
-    background-color: #f8f8f8; /* Sfondo leggermente diverso per lo stato */
+    padding: 5px 8px; /* Leggero padding laterale */
+    background-color: #FFF8E1; /* Sfondo: Crema/Avorio chiaro */
     border-radius: 3px;
-    border: 1px solid #ddd;
+    border: 1px solid #D7CCC8; /* Bordo: Marrone molto chiaro */
+    color: #5D4037; /* Testo: Marrone medio */
 }
 
 /* Stili specifici per lo stato di selezione */
 #selection-status {
-    min-width: 250px; /* Larghezza minima per evitare troppo wrapping */
+    min-width: 250px;
     text-align: center;
 }
+/* Colore specifico per la modalità sostituzione */
+#selection-status[style*="color: red"] { /* Seleziona quando ha lo stile inline rosso */
+     color: #A1887F !important; /* Sovrascrivi con un marrone/taupe più scuro ma meno acceso del rosso */
+     font-weight: bold;
+}
+
 
 /* Stili per il selettore del tempo */
 #time-signature-selector label {
     margin-right: 8px;
     font-weight: bold;
+    color: #5D4037; /* Testo etichetta: Marrone medio */
 }
 
 #time-signature-selector select {
     padding: 6px 8px;
     font-size: 0.95em;
-    border: 1px solid #ccc;
+    border: 1px solid #BCAAA4; /* Bordo: Marrone chiaro/Taupe */
     border-radius: 4px;
     cursor: pointer;
+    background-color: #fff; /* Sfondo bianco */
+    color: #4E342E; /* Testo: Marrone scuro */
 }
 
-/* Stili per i pulsanti di navigazione */
-#navigation button {
-    padding: 8px 15px;
-    margin: 0 5px; /* Ridotto margine laterale tra i pulsanti */
-    font-size: 1em;
-    cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.2s ease; /* Transizione hover */
-}
-
-/* Stile specifico per i pulsanti di navigazione */
-#navigation #prev-btn,
-#navigation #next-btn {
-     background-color: #4CAF50; /* Verde */
-}
-#navigation #prev-btn:hover,
-#navigation #next-btn:hover {
-    background-color: #45a049; /* Verde più scuro on hover */
-}
-#navigation #prev-btn:active,
-#navigation #next-btn:active {
-    background-color: #3e8e41; /* Verde ancora più scuro on click */
-}
-
-/* Stile specifico per il pulsante elimina */
-#navigation #delete-last-btn {
-    background-color: #f44336; /* Rosso */
-}
-#navigation #delete-last-btn:hover {
-    background-color: #e53935; /* Rosso più scuro */
-}
-#navigation #delete-last-btn:active {
-    background-color: #d32f2f; /* Rosso ancora più scuro */
-}
-
-/* Stile specifico per il pulsante PDF */
+/* Stili per i pulsanti di navigazione e azione */
+#navigation button,
 #export-controls button {
     padding: 8px 15px;
+    margin: 0 5px;
     font-size: 1em;
     cursor: pointer;
-    background-color: #007bff; /* Blu */
-    color: white;
+    color: white; /* Testo bianco per contrasto */
     border: none;
     border-radius: 4px;
     transition: background-color 0.2s ease;
 }
+
+/* Stile specifico per i pulsanti di navigazione (Sinistra/Destra) */
+#navigation #prev-btn,
+#navigation #next-btn {
+     background-color: #A1887F; /* Colore base: Marrone/Taupe medio */
+}
+#navigation #prev-btn:hover,
+#navigation #next-btn:hover {
+    background-color: #8D6E63; /* Hover: Marrone/Taupe leggermente più scuro */
+}
+#navigation #prev-btn:active,
+#navigation #next-btn:active {
+    background-color: #795548; /* Active: Marrone più scuro */
+}
+
+/* Stile specifico per i pulsanti elimina (Ultima/Selezionato) */
+#navigation #delete-last-btn,
+#navigation #delete-selected-btn {
+    background-color: #BCAAA4; /* Colore base: Marrone chiaro/Taupe (meno aggressivo del rosso) */
+}
+#navigation #delete-last-btn:hover,
+#navigation #delete-selected-btn:hover {
+    background-color: #A1887F; /* Hover: Marrone/Taupe medio */
+}
+#navigation #delete-last-btn:active,
+#navigation #delete-selected-btn:active {
+    background-color: #8D6E63; /* Active: Marrone/Taupe leggermente più scuro */
+}
+
+/* Stile specifico per il pulsante esporta */
+#export-controls button {
+    background-color: #8D6E63; /* Colore base: Marrone/Taupe medio-scuro */
+}
 #export-controls button:hover {
-    background-color: #0056b3; /* Blu più scuro */
+    background-color: #795548; /* Hover: Marrone più scuro */
 }
 #export-controls button:active {
-    background-color: #004085; /* Blu ancora più scuro */
+    background-color: #6D4C41; /* Active: Marrone ancora più scuro */
+}
+#export-controls button:disabled { /* Stile quando disabilitato */
+    background-color: #BDBDBD; /* Grigio neutro */
+    cursor: not-allowed;
 }
 
 
 /* Stile per l'evidenziazione dell'elemento selezionato */
 .highlight-overlay {
-    position: absolute; /* Posizionato rispetto a .stave-container */
-    border: 2px solid rgba(255, 0, 0, 0.7); /* Rosso semitrasparente */
-    background-color: rgba(255, 0, 0, 0.1); /* Sfondo rosso molto leggero */
-    pointer-events: none; /* Non interferisce con il mouse o altri eventi */
-    z-index: 10; /* Assicura che sia sopra il contenuto SVG */
-    box-sizing: border-box; /* Il bordo è incluso nelle dimensioni */
-    border-radius: 3px; /* Angoli leggermente arrotondati */
+    position: absolute;
+    /* Usa un colore marrone/ambra semitrasparente per l'highlight */
+    border: 2px solid rgba(188, 170, 164, 0.7); /* Bordo: Marrone chiaro/Taupe semitrasparente */
+    background-color: rgba(239, 235, 233, 0.2); /* Sfondo: Beige caldo molto leggero e trasparente */
+    pointer-events: none;
+    z-index: 10;
+    box-sizing: border-box;
+    border-radius: 3px;
 }
 
 /* Stili per il titolo principale */
 h1 {
     text-align: center;
-    color: #2c3e50; /* Blu scuro */
+    color: #6D4C41; /* Titolo: Marrone scuro e caldo */
     margin-bottom: 30px;
 }

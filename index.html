@@ -9,8 +9,6 @@
     <script src="https://unpkg.com/vexflow@4.2.3/build/cjs/vexflow.js"></script>
     <!-- Carica html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- RIMOSSE le righe per jsPDF e Canvg -->
-
 </head>
 <body>
     <h1>Pentagramma MIDI Interattivo (4 Ottave)</h1>
@@ -42,16 +40,14 @@
         <div id="navigation">
             <button id="prev-btn" title="Seleziona elemento precedente">< Sinistra</button>
             <button id="next-btn" title="Seleziona elemento successivo">Destra ></button>
+            <button id="delete-selected-btn" title="Elimina elemento selezionato">Elimina Selezionato</button> <!-- NUOVO PULSANTE -->
             <button id="delete-last-btn" title="Elimina ultimo elemento inserito">Elimina Ultima</button>
         </div>
          <div id="export-controls">
-             <!-- Modificato testo e ID pulsante -->
              <button id="download-image-btn" title="Salva come Immagine (PNG)">Salva Immagine</button>
          </div>
         <div id="selection-status">Elemento selezionato: Nessuno (Modalità Aggiunta)</div>
     </div>
-
-    <!-- Rimosso canvas temporaneo -->
 
     <!-- Carica il nostro script (assicurati sia alla fine o con defer) -->
     <script src="script.js" defer></script>
