@@ -1,0 +1,162 @@
+/* Stili generali del corpo */
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4; /* Sfondo leggermente grigio */
+    color: #333; /* Colore testo scuro */
+}
+
+/* Stili per i contenitori dei pentagrammi */
+.stave-container {
+    margin-bottom: 25px; /* Spazio tra i sistemi */
+    border: 1px solid #ccc; /* Bordo più visibile */
+    background-color: #fff; /* Sfondo bianco per il pentagramma */
+    min-height: 190px; /* Altezza minima per contenere il grand staff */
+    width: 90%; /* Larghezza relativa */
+    max-width: 850px; /* Larghezza massima aumentata leggermente */
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative; /* Necessario per posizionare l'evidenziazione */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Ombra leggera */
+    overflow: hidden; /* Nasconde eventuali contenuti SVG che escono */
+}
+
+/* Contenitore per tutti i controlli sotto i pentagrammi */
+#controls {
+    margin-top: 30px;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    background-color: #e9e9e9; /* Sfondo leggermente più scuro per i controlli */
+    max-width: 850px; /* Stessa larghezza massima dei pentagrammi */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+
+    /* Flexbox per allineare i gruppi di controlli */
+    display: flex;
+    flex-wrap: wrap; /* Permette ai controlli di andare a capo su schermi piccoli */
+    justify-content: space-around; /* Spazia i gruppi di controlli */
+    align-items: center; /* Allinea verticalmente al centro */
+    gap: 10px 15px; /* Aggiustato gap per più controlli */
+}
+
+/* Stili per i singoli gruppi di controlli */
+#midi-status,
+#last-note,
+#selection-status,
+#time-signature-selector,
+#navigation,
+#export-controls { /* Aggiunto #export-controls */
+    margin-bottom: 5px; /* Ridotto margine inferiore interno ai gruppi */
+    /* Rimosso margine laterale, gestito da 'gap' in #controls */
+}
+
+/* Stili per i testi di stato */
+#midi-status,
+#last-note,
+#selection-status {
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 5px;
+    background-color: #f8f8f8; /* Sfondo leggermente diverso per lo stato */
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+/* Stili specifici per lo stato di selezione */
+#selection-status {
+    min-width: 250px; /* Larghezza minima per evitare troppo wrapping */
+    text-align: center;
+}
+
+/* Stili per il selettore del tempo */
+#time-signature-selector label {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+#time-signature-selector select {
+    padding: 6px 8px;
+    font-size: 0.95em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Stili per i pulsanti di navigazione */
+#navigation button {
+    padding: 8px 15px;
+    margin: 0 5px; /* Ridotto margine laterale tra i pulsanti */
+    font-size: 1em;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease; /* Transizione hover */
+}
+
+/* Stile specifico per i pulsanti di navigazione */
+#navigation #prev-btn,
+#navigation #next-btn {
+     background-color: #4CAF50; /* Verde */
+}
+#navigation #prev-btn:hover,
+#navigation #next-btn:hover {
+    background-color: #45a049; /* Verde più scuro on hover */
+}
+#navigation #prev-btn:active,
+#navigation #next-btn:active {
+    background-color: #3e8e41; /* Verde ancora più scuro on click */
+}
+
+/* Stile specifico per il pulsante elimina */
+#navigation #delete-last-btn {
+    background-color: #f44336; /* Rosso */
+}
+#navigation #delete-last-btn:hover {
+    background-color: #e53935; /* Rosso più scuro */
+}
+#navigation #delete-last-btn:active {
+    background-color: #d32f2f; /* Rosso ancora più scuro */
+}
+
+/* Stile specifico per il pulsante PDF */
+#export-controls button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007bff; /* Blu */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+#export-controls button:hover {
+    background-color: #0056b3; /* Blu più scuro */
+}
+#export-controls button:active {
+    background-color: #004085; /* Blu ancora più scuro */
+}
+
+
+/* Stile per l'evidenziazione dell'elemento selezionato */
+.highlight-overlay {
+    position: absolute; /* Posizionato rispetto a .stave-container */
+    border: 2px solid rgba(255, 0, 0, 0.7); /* Rosso semitrasparente */
+    background-color: rgba(255, 0, 0, 0.1); /* Sfondo rosso molto leggero */
+    pointer-events: none; /* Non interferisce con il mouse o altri eventi */
+    z-index: 10; /* Assicura che sia sopra il contenuto SVG */
+    box-sizing: border-box; /* Il bordo è incluso nelle dimensioni */
+    border-radius: 3px; /* Angoli leggermente arrotondati */
+}
+
+/* Stili per il titolo principale */
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Blu scuro */
+    margin-bottom: 30px;
+}

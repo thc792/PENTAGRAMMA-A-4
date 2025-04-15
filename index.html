@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentagramma MIDI Interattivo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Carica VexFlow -->
+    <script src="https://unpkg.com/vexflow@4.2.3/build/cjs/vexflow.js"></script>
+    <!-- Carica html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- RIMOSSE le righe per jsPDF e Canvg -->
+
+</head>
+<body>
+    <h1>Pentagramma MIDI Interattivo (4 Ottave)</h1>
+
+    <!-- Contenitore per TUTTI i pentagrammi (per screenshot) -->
+    <div id="score-content">
+        <div id="pentagramma1" class="stave-container"></div>
+        <div id="pentagramma2" class="stave-container"></div>
+        <div id="pentagramma3" class="stave-container"></div>
+        <div id="pentagramma4" class="stave-container"></div>
+    </div>
+
+    <div id="controls">
+        <div id="midi-status">Stato MIDI: In attesa...</div>
+        <div id="last-note">Ultima nota MIDI: -</div>
+        <div id="time-signature-selector">
+            <label for="timeSig">Tempo:</label>
+            <select id="timeSig" name="timeSig">
+                <option value="4/4" selected>4/4</option>
+                <option value="3/4">3/4</option>
+                <option value="2/4">2/4</option>
+                <option value="6/8">6/8</option>
+                <option value="9/8">9/8</option>
+                <option value="12/8">12/8</option>
+                <option value="C">C (4/4)</option>
+                <option value="C|">C| (2/2 Alla Breve)</option>
+            </select>
+        </div>
+        <div id="navigation">
+            <button id="prev-btn" title="Seleziona elemento precedente">< Sinistra</button>
+            <button id="next-btn" title="Seleziona elemento successivo">Destra ></button>
+            <button id="delete-last-btn" title="Elimina ultimo elemento inserito">Elimina Ultima</button>
+        </div>
+         <div id="export-controls">
+             <!-- Modificato testo e ID pulsante -->
+             <button id="download-image-btn" title="Salva come Immagine (PNG)">Salva Immagine</button>
+         </div>
+        <div id="selection-status">Elemento selezionato: Nessuno (Modalità Aggiunta)</div>
+    </div>
+
+    <!-- Rimosso canvas temporaneo -->
+
+    <!-- Carica il nostro script (assicurati sia alla fine o con defer) -->
+    <script src="script.js" defer></script>
+</body>
+</html>
