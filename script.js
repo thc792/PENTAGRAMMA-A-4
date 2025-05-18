@@ -1,3 +1,23 @@
+ /**
+
+ *
+ * Piano Tutor Extrame Edition V2 (o il nome attuale del progetto)
+ * Copyright (c) 2023-2024 Lorenzetti Giuseppe (aggiorna l'anno se necessario)
+ *
+ * Tutti i diritti riservati.
+ *
+ * Questo software è proprietario e confidenziale.
+ * È concesso in licenza, non venduto. L'uso, la riproduzione, la modifica
+ * o la distribuzione non autorizzata di questo software, o di qualsiasi sua parte,
+ * sono severamente vietati.
+ *
+ * Per informazioni sulla licenza e per i termini di utilizzo completi,
+ * fare riferimento al file LICENSE.md disponibile nel repository del progetto:
+ * https:https://github.com/thc792/PENTAGRAMMA-A-4/blob/main/LICENSE.md]
+ * o contattare [pianothc791@gmail.com].
+ */
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Funzione helper per mostrare errori all'utente
     function displayError(message) {
