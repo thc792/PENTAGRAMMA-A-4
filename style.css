@@ -4,42 +4,125 @@ body {
     padding: 20px;
     background-color: #FDF8F0; /* Sfondo: Beige/avorio molto chiaro e caldo */
     color: #4E342E; /* Colore testo principale: Marrone scuro */
+    margin: 0; /* Rimuove margini default del browser */
 }
 
-/* Stili per i contenitori dei pentagrammi (Lasciati volutamente semplici) */
-.stave-container {
-    margin-bottom: 25px;
-    border: 1px solid #D7CCC8; /* Bordo: Marrone molto chiaro, poco invadente */
-    background-color: #fff; /* Sfondo bianco per massima leggibilità */
-    min-height: 190px;
-    width: 90%;
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    box-shadow: 2px 2px 5px rgba(109, 76, 65, 0.1); /* Ombra leggera con tinta marrone */
-    overflow: hidden;
+/* Stili per il titolo principale */
+h1 {
+    text-align: center;
+    color: #6D4C41; /* Titolo: Marrone scuro e caldo */
+    margin-bottom: 20px;
 }
 
-/* Contenitore per tutti i controlli sotto i pentagrammi */
-#controls {
-    margin-top: 30px;
-    padding: 15px 20px;
+/* Layout Principale Flex per Palette e Contenuto */
+#main-content-wrapper {
+    display: flex;
+    gap: 20px; /* Spazio tra la palette e il contenuto principale */
+    padding: 0 20px; /* Aggiunge un po' di padding laterale al wrapper */
+}
+
+/* Palette Strumenti (Sinistra) */
+#tools-palette {
     border: 1px solid #BCAAA4; /* Bordo: Marrone chiaro/Taupe */
     background-color: #EFEBE9; /* Sfondo: Grigio/Beige molto chiaro e caldo */
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(109, 76, 65, 0.1); /* Ombra leggera */
+    width: 200px; /* Larghezza fissa per la palette */
+    flex-shrink: 0; /* Impedisce alla palette di restringersi */
+    align-self: flex-start; /* Allinea la palette in alto nella flex-container */
+}
+
+#tools-palette h3,
+#tools-palette h4 {
+    color: #5D4037; /* Testo: Marrone medio */
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#tools-palette h4 {
+    margin-top: 15px;
+    font-size: 0.9em;
+    border-bottom: 1px solid #D7CCC8; /* Bordo: Marrone molto chiaro */
+    padding-bottom: 5px;
+}
+
+#clef-selector-palette,
+#rests-palette,
+#accidental-preference-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px; /* Spazio tra le sezioni della palette */
+}
+#accidental-preference-palette:last-child { /* Ora accidental-preference-palette è l'ultima */
+    margin-bottom: 0;
+}
+
+
+.tool-button {
+    padding: 10px 12px;
+    font-size: 1.2em;
+    line-height: 1;
+    cursor: pointer;
+    color: white; /* Testo bianco per contrasto */
+    border: none;
+    border-radius: 4px;
+    background-color: #A1887F; /* Colore base: Marrone/Taupe medio */
+    transition: background-color 0.2s ease;
+    min-width: 45px;
+    text-align: center;
+    font-weight: bold;
+}
+.clef-select-button {
+    min-width: 70px;
+}
+.accidental-pref-button {
+    min-width: 50px;
+    font-size: 1.5em;
+}
+
+
+.tool-button:hover {
+    background-color: #8D6E63; /* Hover: Marrone/Taupe leggermente più scuro */
+}
+.tool-button:active {
+    background-color: #795548; /* Active: Marrone più scuro */
+}
+
+/* Stile per i pulsanti selettore chiave e preferenza alterazione quando attivi */
+.clef-select-button.active,
+.accidental-pref-button.active {
+    background-color: #6D4C41; /* Marrone ancora più scuro */
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+/* Contenitore per Controlli e Pentagrammi (Destra) */
+#score-and-controls-wrapper {
+    flex-grow: 1; /* Occupa lo spazio rimanente */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spazio tra controlli e pentagrammi */
+    min-width: 0; /* Necessario per flex-grow in alcuni scenari con overflow */
+}
+
+/* Contenitore per i controlli superiori */
+#controls {
+    padding: 15px 20px;
+    border: 1px solid #BCAAA4;
+    background-color: #EFEBE9;
+    width: 100%; /* Occupa la larghezza del suo contenitore flex */
     text-align: center;
     border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(109, 76, 65, 0.1); /* Ombra leggera con tinta marrone */
+    box-shadow: 1px 1px 3px rgba(109, 76, 65, 0.1);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     gap: 10px 15px;
+    box-sizing: border-box; /* Per includere padding/border nella larghezza */
 }
 
 /* Stili per i singoli gruppi di controlli */
@@ -58,40 +141,35 @@ body {
 #selection-status {
     font-weight: bold;
     font-size: 0.9em;
-    padding: 5px 8px; /* Leggero padding laterale */
+    padding: 5px 8px;
     background-color: #FFF8E1; /* Sfondo: Crema/Avorio chiaro */
     border-radius: 3px;
-    border: 1px solid #D7CCC8; /* Bordo: Marrone molto chiaro */
-    color: #5D4037; /* Testo: Marrone medio */
+    border: 1px solid #D7CCC8;
+    color: #5D4037;
 }
-
-/* Stili specifici per lo stato di selezione */
 #selection-status {
     min-width: 250px;
     text-align: center;
 }
-/* Colore specifico per la modalità sostituzione */
-#selection-status[style*="color: red"] { /* Seleziona quando ha lo stile inline rosso */
-     color: #A1887F !important; /* Sovrascrivi con un marrone/taupe più scuro ma meno acceso del rosso */
+#selection-status[style*="color: red"] {
+     color: #A1887F !important;
      font-weight: bold;
 }
-
 
 /* Stili per il selettore del tempo */
 #time-signature-selector label {
     margin-right: 8px;
     font-weight: bold;
-    color: #5D4037; /* Testo etichetta: Marrone medio */
+    color: #5D4037;
 }
-
 #time-signature-selector select {
     padding: 6px 8px;
     font-size: 0.95em;
-    border: 1px solid #BCAAA4; /* Bordo: Marrone chiaro/Taupe */
+    border: 1px solid #BCAAA4;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #fff; /* Sfondo bianco */
-    color: #4E342E; /* Testo: Marrone scuro */
+    background-color: #fff;
+    color: #4E342E;
 }
 
 /* Stili per i pulsanti di navigazione e azione */
@@ -101,71 +179,79 @@ body {
     margin: 0 5px;
     font-size: 1em;
     cursor: pointer;
-    color: white; /* Testo bianco per contrasto */
+    color: white;
     border: none;
     border-radius: 4px;
     transition: background-color 0.2s ease;
 }
 
-/* Stile specifico per i pulsanti di navigazione (Sinistra/Destra) */
 #navigation #prev-btn,
 #navigation #next-btn {
-     background-color: #A1887F; /* Colore base: Marrone/Taupe medio */
+     background-color: #A1887F;
 }
 #navigation #prev-btn:hover,
 #navigation #next-btn:hover {
-    background-color: #8D6E63; /* Hover: Marrone/Taupe leggermente più scuro */
+    background-color: #8D6E63;
 }
 #navigation #prev-btn:active,
 #navigation #next-btn:active {
-    background-color: #795548; /* Active: Marrone più scuro */
+    background-color: #795548;
 }
 
-/* Stile specifico per i pulsanti elimina (Ultima/Selezionato) */
 #navigation #delete-last-btn,
 #navigation #delete-selected-btn {
-    background-color: #BCAAA4; /* Colore base: Marrone chiaro/Taupe (meno aggressivo del rosso) */
+    background-color: #BCAAA4;
 }
 #navigation #delete-last-btn:hover,
 #navigation #delete-selected-btn:hover {
-    background-color: #A1887F; /* Hover: Marrone/Taupe medio */
+    background-color: #A1887F;
 }
 #navigation #delete-last-btn:active,
 #navigation #delete-selected-btn:active {
-    background-color: #8D6E63; /* Active: Marrone/Taupe leggermente più scuro */
+    background-color: #8D6E63;
 }
 
-/* Stile specifico per il pulsante esporta */
 #export-controls button {
-    background-color: #8D6E63; /* Colore base: Marrone/Taupe medio-scuro */
+    background-color: #8D6E63;
 }
 #export-controls button:hover {
-    background-color: #795548; /* Hover: Marrone più scuro */
+    background-color: #795548;
 }
 #export-controls button:active {
-    background-color: #6D4C41; /* Active: Marrone ancora più scuro */
+    background-color: #6D4C41;
 }
-#export-controls button:disabled { /* Stile quando disabilitato */
-    background-color: #BDBDBD; /* Grigio neutro */
+#export-controls button:disabled {
+    background-color: #BDBDBD;
     cursor: not-allowed;
 }
 
+/* Contenitore per TUTTI i pentagrammi */
+#score-content {
+    width: 100%;
+}
+
+/* Stili per i contenitori dei singoli pentagrammi */
+.stave-container {
+    margin-bottom: 25px;
+    border: 1px solid #D7CCC8;
+    background-color: #fff;
+    min-height: 190px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(109, 76, 65, 0.1);
+    overflow: hidden;
+    box-sizing: border-box;
+}
 
 /* Stile per l'evidenziazione dell'elemento selezionato */
 .highlight-overlay {
     position: absolute;
-    /* Usa un colore marrone/ambra semitrasparente per l'highlight */
-    border: 2px solid rgba(188, 170, 164, 0.7); /* Bordo: Marrone chiaro/Taupe semitrasparente */
-    background-color: rgba(239, 235, 233, 0.2); /* Sfondo: Beige caldo molto leggero e trasparente */
+    border: 2px solid rgba(188, 170, 164, 0.7);
+    background-color: rgba(239, 235, 233, 0.2);
     pointer-events: none;
     z-index: 10;
     box-sizing: border-box;
     border-radius: 3px;
-}
-
-/* Stili per il titolo principale */
-h1 {
-    text-align: center;
-    color: #6D4C41; /* Titolo: Marrone scuro e caldo */
-    margin-bottom: 30px;
 }

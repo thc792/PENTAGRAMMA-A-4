@@ -1,5 +1,5 @@
 MIT License
-# Licenza Software Proprietario - Piano Tutor Extrame Edition V2
+# Licenza Software Proprietario - Pentagramma a4
 
 Copyright (c) 2023-2024 Lorenzetti Giuseppe 
 

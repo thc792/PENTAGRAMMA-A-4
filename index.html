@@ -13,43 +13,76 @@
 <body>
     <h1>Pentagramma MIDI Interattivo (4 Ottave)</h1>
 
-    <!-- Contenitore per TUTTI i pentagrammi (per screenshot) -->
-    <div id="score-content">
-        <div id="pentagramma1" class="stave-container"></div>
-        <div id="pentagramma2" class="stave-container"></div>
-        <div id="pentagramma3" class="stave-container"></div>
-        <div id="pentagramma4" class="stave-container"></div>
+    <div id="main-content-wrapper">
+        <!-- PALETTE STRUMENTI (SINISTRA) -->
+        <div id="tools-palette">
+            <h3>Strumenti</h3>
+
+            <div id="clef-selector-palette">
+                <h4>Chiave Inserimento</h4>
+                <button class="tool-button clef-select-button active" id="select-treble-clef" data-clef="treble" title="Inserisci in Chiave di Violino">Violino</button>
+                <button class="tool-button clef-select-button" id="select-bass-clef" data-clef="bass" title="Inserisci in Chiave di Basso">Basso</button>
+            </div>
+
+            <div id="rests-palette">
+                <h4>Pause</h4>
+                <button class="tool-button rest-tool" data-duration="w" title="Pausa di Semibreve (Intero)">W</button>
+                <button class="tool-button rest-tool" data-duration="h" title="Pausa di Minima (Metà)">H</button>
+                <button class="tool-button rest-tool" data-duration="q" title="Pausa di Semiminima (Quarto)">Q</button>
+                <button class="tool-button rest-tool" data-duration="8" title="Pausa di Croma (Ottavo)">8</button>
+                <button class="tool-button rest-tool" data-duration="16" title="Pausa di Semicroma (Sedicesimo)">16</button>
+                <button class="tool-button rest-tool" data-duration="32" title="Pausa di Biscroma (Trentaduesimo)">32</button>
+            </div>
+
+            <div id="accidental-preference-palette">
+                <h4>Alterazione Preferita</h4>
+                <button class="tool-button accidental-pref-button active" id="prefer-sharps" data-preference="sharps" title="Preferisci Diesis (#)">#</button>
+                <button class="tool-button accidental-pref-button" id="prefer-flats" data-preference="flats" title="Preferisci Bemolli (b)">b</button>
+            </div>
+        </div>
+
+        <!-- CONTENUTO PRINCIPALE (DESTRA) -->
+        <div id="score-and-controls-wrapper">
+            <!-- CONTROLLI SUPERIORI -->
+            <div id="controls">
+                <div id="midi-status">Stato MIDI: In attesa...</div>
+                <div id="last-note">Ultima nota MIDI: -</div>
+                <div id="time-signature-selector">
+                    <label for="timeSig">Tempo:</label>
+                    <select id="timeSig" name="timeSig">
+                        <option value="4/4" selected>4/4</option>
+                        <option value="3/4">3/4</option>
+                        <option value="2/4">2/4</option>
+                        <option value="6/8">6/8</option>
+                        <option value="9/8">9/8</option>
+                        <option value="12/8">12/8</option>
+                        <option value="C">C (4/4)</option>
+                        <option value="C|">C| (2/2 Alla Breve)</option>
+                    </select>
+                </div>
+                <div id="navigation">
+                    <button id="prev-btn" title="Seleziona elemento precedente">< Sinistra</button>
+                    <button id="next-btn" title="Seleziona elemento successivo">Destra ></button>
+                    <button id="delete-selected-btn" title="Elimina elemento selezionato">Elimina Selezionato</button>
+                    <button id="delete-last-btn" title="Elimina ultimo elemento inserito">Elimina Ultima</button>
+                </div>
+                 <div id="export-controls">
+                     <button id="download-image-btn" title="Salva come Immagine (PNG)">Salva Immagine</button>
+                 </div>
+                <div id="selection-status">Elemento selezionato: Nessuno (Modalità Aggiunta)</div>
+            </div>
+
+            <!-- CONTENITORE PENTAGRAMMI -->
+            <div id="score-content">
+                <div id="pentagramma1" class="stave-container"></div>
+                <div id="pentagramma2" class="stave-container"></div>
+                <div id="pentagramma3" class="stave-container"></div>
+                <div id="pentagramma4" class="stave-container"></div>
+            </div>
+        </div>
     </div>
 
-    <div id="controls">
-        <div id="midi-status">Stato MIDI: In attesa...</div>
-        <div id="last-note">Ultima nota MIDI: -</div>
-        <div id="time-signature-selector">
-            <label for="timeSig">Tempo:</label>
-            <select id="timeSig" name="timeSig">
-                <option value="4/4" selected>4/4</option>
-                <option value="3/4">3/4</option>
-                <option value="2/4">2/4</option>
-                <option value="6/8">6/8</option>
-                <option value="9/8">9/8</option>
-                <option value="12/8">12/8</option>
-                <option value="C">C (4/4)</option>
-                <option value="C|">C| (2/2 Alla Breve)</option>
-            </select>
-        </div>
-        <div id="navigation">
-            <button id="prev-btn" title="Seleziona elemento precedente">< Sinistra</button>
-            <button id="next-btn" title="Seleziona elemento successivo">Destra ></button>
-            <button id="delete-selected-btn" title="Elimina elemento selezionato">Elimina Selezionato</button> <!-- NUOVO PULSANTE -->
-            <button id="delete-last-btn" title="Elimina ultimo elemento inserito">Elimina Ultima</button>
-        </div>
-         <div id="export-controls">
-             <button id="download-image-btn" title="Salva come Immagine (PNG)">Salva Immagine</button>
-         </div>
-        <div id="selection-status">Elemento selezionato: Nessuno (Modalità Aggiunta)</div>
-    </div>
-
-    <!-- Carica il nostro script (assicurati sia alla fine o con defer) -->
+    <!-- Carica il nostro script -->
     <script src="script.js" defer></script>
 </body>
 </html>
